@@ -30,9 +30,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginBottom="48dp"
-        attrs:piv_padding="12dp"
-        attrs:piv_radius="8dp" />
+        app:piv_animationType="none"
+        attrs:piv_padding="40dp"
+        attrs:piv_width="30dp"
+        attrs:piv_radius="0dp"
+        attrs:piv_round_corner="6dp"
+        attrs:piv_height="10dp" />
 
     <FrameLayout
         android:id="@+id/fragmentHolder"

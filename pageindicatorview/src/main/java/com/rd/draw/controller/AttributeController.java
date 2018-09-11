@@ -108,6 +108,21 @@ public class AttributeController {
             orientation = Orientation.VERTICAL;
         }
 
+        int wormWidth = (int) typedArray.getDimension(R.styleable.PageIndicatorView_piv_width, DensityUtils.dpToPx(Indicator.DEFAULT_WIDTH_DP));
+        if (wormWidth < 0) {
+            wormWidth = 0;
+        }
+
+        int wormHeight = (int) typedArray.getDimension(R.styleable.PageIndicatorView_piv_height, DensityUtils.dpToPx(Indicator.DEFAULT_HEIGHT_DP));
+        if (wormHeight < 0) {
+            wormHeight = 0;
+        }
+
+        int wormRound = (int) typedArray.getDimension(R.styleable.PageIndicatorView_piv_round_corner, DensityUtils.dpToPx(Indicator.DEFAULT_ROUNDED_CORNER_DP));
+        if (wormRound < 0) {
+            wormRound = 0;
+        }
+
         int radius = (int) typedArray.getDimension(R.styleable.PageIndicatorView_piv_radius, DensityUtils.dpToPx(Indicator.DEFAULT_RADIUS_DP));
         if (radius < 0) {
             radius = 0;
@@ -136,6 +151,9 @@ public class AttributeController {
         }
 
         indicator.setRadius(radius);
+        indicator.setWormWidth(wormWidth);
+        indicator.setWormHeight(wormHeight);
+        indicator.setWormRound(wormRound);
         indicator.setOrientation(orientation);
         indicator.setPadding(padding);
         indicator.setScaleFactor(scaleFactor);

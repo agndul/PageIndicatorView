@@ -10,12 +10,19 @@ public class Indicator {
     public static final int MIN_COUNT = 1;
     public static final int COUNT_NONE = -1;
 
-    public static final int DEFAULT_RADIUS_DP = 6;
+    public static final int DEFAULT_RADIUS_DP = 0;
+    public static final int DEFAULT_WIDTH_DP = 0;
+    public static final int DEFAULT_HEIGHT_DP = 0;
+    public static final int DEFAULT_ROUNDED_CORNER_DP = 0;
     public static final int DEFAULT_PADDING_DP = 8;
 
     private int height;
     private int width;
     private int radius;
+
+    private int wormWidth;
+    private int wormHeight;
+    private int wormRound;
 
     private int padding;
     private int paddingLeft;
@@ -63,6 +70,30 @@ public class Indicator {
 
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    public int getWormHeight() {
+        return wormHeight;
+    }
+
+    public int getWormWidth() {
+        return wormWidth;
+    }
+
+    public int getWormRound() {
+        return wormRound;
+    }
+
+    public void setWormHeight(int wormHeight) {
+        this.wormHeight = wormHeight;
+    }
+
+    public void setWormWidth(int wormWidth) {
+        this.wormWidth = wormWidth;
+    }
+
+    public void setWormRound(int wormRound) {
+        this.wormRound = wormRound;
     }
 
     public int getRadius() {

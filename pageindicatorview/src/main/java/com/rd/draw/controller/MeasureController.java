@@ -17,6 +17,8 @@ public class MeasureController {
         int heightSize = View.MeasureSpec.getSize(heightMeasureSpec);
 
         int count = indicator.getCount();
+        int wormHeight = indicator.getWormHeight();
+        int wormWidth = indicator.getWormWidth();
         int radius = indicator.getRadius();
         int stroke = indicator.getStroke();
 
@@ -35,17 +37,21 @@ public class MeasureController {
 
         Orientation orientation = indicator.getOrientation();
         if (count != 0) {
-            int diameterSum = circleDiameterPx * count;
             int strokeSum = (stroke * 2) * count;
-
             int paddingSum = padding * (count - 1);
-            int w = diameterSum + strokeSum + paddingSum;
-            int h = circleDiameterPx + stroke;
-
+            int widthSum = 0;
+            int h = 0;
+            if (radius != 0) {
+                widthSum = circleDiameterPx * count;
+                h = circleDiameterPx + stroke;
+            } else if (wormHeight != 0 && wormWidth != 0) {
+                widthSum = wormWidth * count;
+                h = wormHeight + stroke;
+            }
+            int w = widthSum + strokeSum + paddingSum;
             if (orientation == Orientation.HORIZONTAL) {
                 desiredWidth = w;
                 desiredHeight = h;
-
             } else {
                 desiredWidth = h;
                 desiredHeight = w;

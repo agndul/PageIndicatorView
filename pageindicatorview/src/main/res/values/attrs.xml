@@ -14,6 +14,9 @@
         <attr name="piv_dynamicCount" format="boolean" />
 
         <attr name="piv_radius" format="dimension" />
+        <attr name="piv_width" format="dimension" />
+        <attr name="piv_height" format="dimension" />
+        <attr name="piv_round_corner" format="dimension" />
         <attr name="piv_padding" format="dimension" />
         <attr name="piv_strokeWidth" format="dimension" />
         <attr name="piv_scaleFactor" format="float" />

@@ -2,6 +2,8 @@ package com.rd.draw.drawer.type;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.RectF;
 import android.support.annotation.NonNull;
 import com.rd.animation.type.AnimationType;
 import com.rd.draw.data.Indicator;
@@ -27,6 +29,9 @@ public class BasicDrawer extends BaseDrawer {
             int coordinateY) {
 
         float radius = indicator.getRadius();
+        float wormWidth = indicator.getWormWidth();
+        float wormHeight = indicator.getWormHeight();
+        float wormRound = indicator.getWormRound();
         int strokePx = indicator.getStroke();
         float scaleFactor = indicator.getScaleFactor();
 
@@ -35,12 +40,22 @@ public class BasicDrawer extends BaseDrawer {
         int selectedPosition = indicator.getSelectedPosition();
         AnimationType animationType = indicator.getAnimationType();
 
-		if (animationType == AnimationType.SCALE && !isSelectedItem) {
-			radius *= scaleFactor;
+        if (radius != 0) {
+            if (animationType == AnimationType.SCALE && !isSelectedItem) {
+                radius *= scaleFactor;
 
-		} else if (animationType == AnimationType.SCALE_DOWN && isSelectedItem) {
-			radius *= scaleFactor;
-		}
+            } else if (animationType == AnimationType.SCALE_DOWN && isSelectedItem) {
+                radius *= scaleFactor;
+            }
+        } else if (wormWidth != 0 && wormHeight != 0) {
+            if (animationType == AnimationType.SCALE && !isSelectedItem) {
+                wormWidth *= scaleFactor;
+                wormHeight *= scaleFactor;
+            } else if (animationType == AnimationType.SCALE_DOWN && isSelectedItem) {
+                wormWidth *= scaleFactor;
+                wormHeight *= scaleFactor;
+            }
+        }
 
         int color = unselectedColor;
         if (position == selectedPosition) {
@@ -56,6 +71,11 @@ public class BasicDrawer extends BaseDrawer {
         }
 
         paint.setColor(color);
-        canvas.drawCircle(coordinateX, coordinateY, radius, paint);
+        if (radius != 0) {
+            canvas.drawCircle(coordinateX, coordinateY, radius, paint);
+        } else if (wormWidth != 0 && wormHeight != 0) {
+            RectF rectangle = new RectF(coordinateX-wormWidth/2, coordinateY + wormHeight/2, coordinateX+wormWidth/2, coordinateY-wormHeight/2);
+            canvas.drawRoundRect(rectangle, wormRound, wormRound, paint);
+        }
     }
 }

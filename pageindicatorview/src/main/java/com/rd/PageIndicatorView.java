@@ -205,6 +205,31 @@ public class PageIndicatorView extends View implements ViewPager.OnPageChangeLis
         updateAlpha();
     }
 
+    public void setWormHeight(int wormHeight) {
+        if (wormHeight < 0) {
+            wormHeight = 0;
+        }
+
+        manager.indicator().setWormHeight(wormHeight);
+        invalidate();
+    }
+
+    public void setWormWidth(int wormWidth) {
+        if (wormWidth < 0) {
+            wormWidth = 0;
+        }
+
+        manager.indicator().setWormWidth(wormWidth);
+        invalidate();
+    }
+    public int getWormHeight() {
+        return manager.indicator().getWormHeight();
+    }
+
+    public int getWormWidth() {
+        return manager.indicator().getWormWidth();
+    }
+
     /**
      * Set radius in dp of each circle indicator. Default value is {@link Indicator#DEFAULT_RADIUS_DP}.
      * Note: make sure you set circle Radius, not a Diameter.
